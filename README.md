@@ -1,5 +1,4 @@
 # Stable Diffusion web UI
-**ATTENTION INSTALLATION WORKS BUT WHEN GENERATING IMAGES MAY CRASH YOUR SYSTEM CAUTION IS ADVICED**
 
 A web interface for Stable Diffusion, implemented using Gradio library.
 
