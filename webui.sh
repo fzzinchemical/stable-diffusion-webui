@@ -157,7 +157,10 @@ if ! echo "$gpu_info" | grep -q "NVIDIA";
 then
     if echo "$gpu_info" | grep -q "AMD" && [[ -z "${TORCH_COMMAND}" ]]
     then
-        export TORCH_COMMAND="pip install torch==2.1.2+rocm6.0.2 torchvision==0.16.1+rocm6.0.2 --index-url https://download.pytorch.org/whl/rocm6.0.2"
+        export TORCH_COMMAND="
+        wget https://repo.radeon.com/rocm/manylinux/rocm-rel-6.0.2/torch-2.1.2+rocm6.0-cp310-cp310-linux_x86_64.whl &&
+        wget https://repo.radeon.com/rocm/manylinux/rocm-rel-6.0.2/torchvision-0.16.1+rocm6.0-cp310-cp310-linux_x86_64.whl &&
+        pip3 install --force-reinstall torch-2.1.2+rocm6.0-cp310-cp310-linux_x86_64.whl torchvision-0.16.1+rocm6.0-cp310-cp310-linux_x86_64.whl"
     elif echo "$gpu_info" | grep -q "Huawei" && [[ -z "${TORCH_COMMAND}" ]]
     then
         export TORCH_COMMAND="pip install torch==2.1.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu; pip install torch_npu"
